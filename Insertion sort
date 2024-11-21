@@ -1,0 +1,32 @@
+#include <stdio.h>                                                                                                                  
+int main() { 
+    int a[10], n, i, j, temp; 
+    printf("Enter size of an array (max 10): "); 
+    scanf("%d", &n); 
+    // Check if the entered size is within the bounds 
+    if (n < 1 || n > 10) { 
+        printf("Invalid size. Please enter a size between 1 and 10.\n"); 
+        return 1; // Exit with error code 
+    } 
+    printf("Enter array elements: "); 
+    for (i = 0; i < n; i++) { 
+        scanf("%d", &a[i]); 
+    } 
+    // Insertion sort algorithm 
+    for (i = 1; i < n; i++) { 
+        temp = a[i]; 
+        j = i - 1; 
+        // Move elements of a[0..i-1], that are greater than temp, 
+        // to one position ahead of their current position 
+        while (j >= 0 && temp < a[j]) { 
+            a[j + 1] = a[j]; 
+            j = j - 1; 
+        } 
+        a[j + 1] = temp; 
+    } 
+    printf("Sorted array:\n"); 
+    for (i = 0; i < n; i++) { 
+        printf("%d\n", a[i]); 
+} 
+return 0; // Successful completion 
+}
